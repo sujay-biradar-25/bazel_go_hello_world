@@ -21,5 +21,10 @@ use_repo(
     "com_github_google_uuid",
 )
 
+# Configure Go SDK
 go_sdk = use_extension("@rules_go//go:extensions.bzl", "go_sdk")
 go_sdk.download(version = "1.21.6")
+use_repo(go_sdk, "go_default_sdk")
+
+# Register toolchains
+register_toolchains("@go_default_sdk//:all")
