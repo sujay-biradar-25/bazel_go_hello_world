@@ -1,0 +1,23 @@
+# BUILD
+
+load("@rules_go//go:def.bzl", "go_binary", "go_library")
+load("@gazelle//:def.bzl", "gazelle")
+
+# Gazelle target to update BUILD files
+gazelle(name = "gazelle")
+
+# Define the binary target that depends on the main library
+go_binary(
+    name = "my_app",
+    embed = [":bazel_go_hello_world_lib"],
+    importpath = "github.com/sujay-biradar-25/bazel_go_hello_world",
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "bazel_go_hello_world_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/sujay-biradar-25/bazel_go_hello_world",
+    visibility = ["//visibility:private"],
+    deps = ["//lib"],
+)

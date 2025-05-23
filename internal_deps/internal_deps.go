@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/bwmarrin/snowflake"
+	"github.com/google/uuid"
 )
 
 func InternalFunction() {
@@ -16,5 +17,7 @@ func InternalFunction() {
 	id := snowflakeNode.Generate()
 	fmt.Println(id)
 	fmt.Println("Hello from InternalFunction!")
+	uuid := uuid.New()
+	fmt.Println(uuid)
 
 }

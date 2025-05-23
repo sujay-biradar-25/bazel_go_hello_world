@@ -153,8 +153,8 @@
         "bzlTransitiveDigest": "NRDE4UnZ6cmBs0uVATEd/eqkiMmHHYRSG7MGPgcsxcY=",
         "usagesDigest": "jbeIn/fn4NQ0aLCQSdV2M0LAr6Wl+eHdoJIowBHPyx0=",
         "recordedFileInputs": {
-          "@@//go.mod": "a06a1c90af1f0cb0da0a54fa8ad683a2689db6348e910e85ec7ec37bf931e0d8",
-          "@@//go.sum": "762c0e7b3b3de320a75a96058d66dd00855ac76351446c7e94d41fcebaf3ea2a",
+          "@@//go.mod": "1d3af1c89307f3536dc4e8ee80a834ba69eb049376b38da31f71777100b2ae2b",
+          "@@//go.sum": "7142ee31ba9ec860e21357849a4ad260c4099f46d104957c25e7164e79f2911b",
           "@@gazelle+//go.mod": "48dc6e771c3028ee1c18b9ffc81e596fd5f6d7e0016c5ef280e30f2821f60473",
           "@@gazelle+//go.sum": "7c4460e8ecb5dd8691a51d4fa2e9e4751108b933636497ce46db499fc2e7a88d",
           "@@rules_go+//go.mod": "15454724af1504c4ce1782c2a7f423d596a1d8490125eb7c5bd9c95fea1991f0",
@@ -175,6 +175,20 @@
               "sum": "h1:xm67bEhkKh6ij1790JB83OujPR5CzNe8QuQqAgISZN0=",
               "replace": "",
               "version": "v0.3.0"
+            }
+          },
+          "com_github_google_uuid": {
+            "repoRuleId": "@@gazelle+//internal:go_repository.bzl%go_repository",
+            "attributes": {
+              "importpath": "github.com/google/uuid",
+              "build_directives": [],
+              "build_file_generation": "auto",
+              "build_extra_args": [],
+              "patches": [],
+              "patch_args": [],
+              "sum": "h1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=",
+              "replace": "",
+              "version": "v1.6.0"
             }
           },
           "com_github_gogo_protobuf": {
@@ -466,6 +480,7 @@
             "attributes": {
               "importpaths": {
                 "com_github_bwmarrin_snowflake": "github.com/bwmarrin/snowflake",
+                "com_github_google_uuid": "github.com/google/uuid",
                 "com_github_gogo_protobuf": "github.com/gogo/protobuf",
                 "com_github_golang_mock": "github.com/golang/mock",
                 "com_github_golang_protobuf": "github.com/golang/protobuf",
@@ -499,7 +514,8 @@
         },
         "moduleExtensionMetadata": {
           "explicitRootModuleDirectDeps": [
-            "com_github_bwmarrin_snowflake"
+            "com_github_bwmarrin_snowflake",
+            "com_github_google_uuid"
           ],
           "explicitRootModuleDirectDevDeps": [],
           "useAllRepos": "NO",
