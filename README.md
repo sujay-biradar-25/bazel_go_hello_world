@@ -1,6 +1,6 @@
 # Bazel Go Hello World
 
-A simple Go project demonstrating Bazel 7.4.1 compatibility with Bzlmod.
+A simple Go project demonstrating Bazel 7.4.1 compatibility with WORKSPACE.
 
 ## Prerequisites
 
@@ -11,13 +11,13 @@ A simple Go project demonstrating Bazel 7.4.1 compatibility with Bzlmod.
 
 ```
 bazel_go_hello_world/
-├── MODULE.bazel          # Bzlmod configuration
-├── .bazelversion         # Pins Bazel version to 7.4.1
-├── .bazelrc             # Bazel configuration
-├── go.mod               # Go module definition
-├── BUILD.bazel          # Build file
-├── main.go              # Main application (single file)
-└── README.md            # This file
+├── WORKSPACE            # WORKSPACE configuration
+├── .bazelversion        # Pins Bazel version to 7.4.1
+├── .bazelrc            # Bazel configuration
+├── go.mod              # Go module definition
+├── BUILD.bazel         # Build file
+├── main.go             # Main application (single file)
+└── README.md           # This file
 ```
 
 ## Dependencies
@@ -38,9 +38,17 @@ bazel build //:my_app
 bazel run //:my_app
 ```
 
-### Query external dependencies:
+### Query external dependencies (WORKSPACE style):
 ```bash
-bazel query '@com_github_bwmarrin_snowflake//:snowflake union @com_github_google_uuid//:uuid'
+# Query both dependencies using WORKSPACE syntax
+bazel query //external:com_github_bwmarrin_snowflake union //external:com_github_google_uuid
+
+# Query individual dependencies
+bazel query //external:com_github_bwmarrin_snowflake
+bazel query //external:com_github_google_uuid
+
+# Query all external dependencies
+bazel query //external:*
 ```
 
 ## What the Application Does
@@ -52,22 +60,29 @@ The application demonstrates:
 
 ## Bazel 7.4.1 Compatibility Features
 
-- **Bzlmod**: Modern dependency management (no WORKSPACE file)
-- **Explicit toolchain registration**: Better cross-platform compatibility
+- **WORKSPACE**: Traditional dependency management (no MODULE.bazel)
+- **External queries**: Support for `//external:` syntax
 - **Platform-based resolution**: Improved toolchain selection
-- **Lockfile support**: Reproducible builds with `MODULE.bazel.lock`
+- **Explicit toolchain registration**: Better cross-platform compatibility
 
 ## Configuration
 
 The project uses several Bazel 7.4.1 compatible settings in `.bazelrc`:
-- Bzlmod enabled by default
+- Bzlmod disabled (using WORKSPACE instead)
 - Platform-based toolchain resolution
 - Improved caching and performance settings
 - Better error reporting
+
+## WORKSPACE vs Bzlmod
+
+This project uses WORKSPACE for dependency management, which allows:
+- Traditional `//external:` query syntax
+- Explicit dependency declarations with checksums
+- Compatibility with older Bazel tooling
 
 ## Module Information
 
 - **Module name**: `github.com/sujay-biradar-25/bazel_go_hello_world`
 - **Go version**: 1.21.6
-- **rules_go version**: 0.50.1
-- **gazelle version**: 0.40.0 
+- **rules_go version**: 0.48.1
+- **gazelle version**: 0.35.0 
