@@ -1,8 +1,5 @@
-# Enable Bzlmod for dependency management
-common --enable_bzlmod
-
-# Use the new lockfile format for better reproducibility
-common --lockfile_mode=update
+# Disable Bzlmod and use WORKSPACE for dependency management
+common --noenable_bzlmod
 
 # Enable platform-based toolchain resolution
 build --incompatible_enable_cc_toolchain_resolution
@@ -14,7 +11,7 @@ build --experimental_reuse_sandbox_directories
 build --verbose_failures
 
 # Use the new Go rules implementation
-build --@rules_go//go/config:pure
+build --@io_bazel_rules_go//go/config:pure
 
 # Ensure consistent builds across different environments
 build --incompatible_strict_action_env

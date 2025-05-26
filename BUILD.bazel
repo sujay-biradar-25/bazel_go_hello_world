@@ -1,7 +1,7 @@
 # BUILD
 
-load("@rules_go//go:def.bzl", "go_binary")
-load("@gazelle//:def.bzl", "gazelle")
+load("@io_bazel_rules_go//go:def.bzl", "go_binary")
+load("@bazel_gazelle//:def.bzl", "gazelle")
 
 # Gazelle target to update BUILD files
 gazelle(name = "gazelle")
@@ -13,7 +13,7 @@ go_binary(
     importpath = "github.com/sujay-biradar-25/bazel_go_hello_world",
     visibility = ["//visibility:public"],
     deps = [
-        "@com_github_bwmarrin_snowflake//:snowflake",
-        "@com_github_google_uuid//:uuid",
+        "@com_github_bwmarrin_snowflake//:go_default_library",
+        "@com_github_google_uuid//:go_default_library",
     ],
 )
