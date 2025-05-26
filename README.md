@@ -15,14 +15,9 @@ bazel_go_hello_world/
 ├── .bazelversion         # Pins Bazel version to 7.4.1
 ├── .bazelrc             # Bazel configuration
 ├── go.mod               # Go module definition
-├── BUILD.bazel          # Root build file
-├── main.go              # Main application
-├── lib/
-│   ├── BUILD.bazel      # Library build file
-│   └── lib.go           # Library code
-└── internal_deps/
-    ├── BUILD.bazel      # Internal deps build file
-    └── internal_deps.go # Internal dependencies
+├── BUILD.bazel          # Build file
+├── main.go              # Main application (single file)
+└── README.md            # This file
 ```
 
 ## Dependencies
@@ -47,6 +42,13 @@ bazel run //:my_app
 ```bash
 bazel query '@com_github_bwmarrin_snowflake//:snowflake union @com_github_google_uuid//:uuid'
 ```
+
+## What the Application Does
+
+The application demonstrates:
+1. Generating a Snowflake ID using the `github.com/bwmarrin/snowflake` package
+2. Generating a UUID using the `github.com/google/uuid` package
+3. Simple console output showing both dependencies work correctly
 
 ## Bazel 7.4.1 Compatibility Features
 
