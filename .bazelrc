@@ -1,0 +1,26 @@
+# Enable Bzlmod for dependency management
+common --enable_bzlmod
+
+# Use the new lockfile format for better reproducibility
+common --lockfile_mode=update
+
+# Enable platform-based toolchain resolution
+build --incompatible_enable_cc_toolchain_resolution
+
+# Improve build performance
+build --experimental_reuse_sandbox_directories
+
+# Better error messages
+build --verbose_failures
+
+# Use the new Go rules implementation
+build --@rules_go//go/config:pure
+
+# Ensure consistent builds across different environments
+build --incompatible_strict_action_env
+
+# Enable modern Java toolchain resolution
+build --java_runtime_version=remotejdk_11
+
+# Better caching
+build --experimental_guard_against_concurrent_changes 
